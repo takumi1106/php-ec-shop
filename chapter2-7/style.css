@@ -1,0 +1,856 @@
+@charset "UTF-8";
+
+/* ==============================
+   全体
+============================== */
+
+body {
+	background: #efe3cf;
+	padding: 20px 100px;
+}
+
+footer {
+	margin: 20px 0 0 -10px;
+	padding: 10px;
+	background-color: saddlebrown;
+}
+
+th,
+td {
+	padding: 5px;
+	text-align: center;
+
+	img {
+		width: 250px;
+		aspect-ratio: auto;
+	}
+}
+
+a{
+	color: #5c4033;
+	text-decoration: none;
+}
+
+h2{
+	margin-top: 35px;
+}
+
+/* ==============================
+マイページ
+============================== */
+.account-panel {
+	max-width: 900px;
+	margin: 25px auto;
+	padding: 20px;
+	background: #f8f1e5;
+	border-radius: 10px;
+}
+
+.account-message {
+	max-width: 900px;
+	margin: 0 auto 20px;
+	padding: 12px;
+	color: #2e7d32;
+	background: #fff8e8;
+	border: 1px solid #d2b48c;
+	border-radius: 5px;
+}
+
+.account-form,
+.stock-row {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.stock-list {
+	display: grid;
+	gap: 10px;
+}
+
+.stock-row {
+	display: grid;
+	grid-template-columns: minmax(240px, 1fr) 110px 150px 70px 70px;
+	align-items: center;
+	column-gap: 12px;
+	padding: 10px 0;
+	border-top: 1px solid #d2b48c;
+}
+
+.stock-product {
+	min-width: 0;
+}
+
+.stock-current {
+	display: grid;
+	grid-template-columns: 2.5em 3.5em 1em;
+	align-items: baseline;
+	white-space: nowrap;
+}
+
+.stock-current strong {
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+}
+
+.stock-row label {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	white-space: nowrap;
+}
+
+.stock-row button {
+	width: 70px;
+}
+
+.account-form input,
+.stock-row input {
+	width: 65px;
+	padding: 5px;
+}
+
+.account-form button,
+.stock-row button {
+	padding: 6px 12px;
+	color: #fff;
+	background: #8b5a2b;
+	border: 0;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.account-form button:hover,
+.stock-row button:hover {
+	background: #5c4033;
+}
+
+.account-note {
+	color: #765;
+}
+
+
+/* ==============================
+   ナビゲーション
+============================== */
+
+.nav {
+	display: flex;
+	width: 100%;
+}
+
+.nav a {
+	flex: 1;
+	display: block;
+	padding: 12px 0;
+	font-weight: bold;
+	text-align: center;
+	transition: 0.3s;
+}
+
+.nav a:hover {
+	color: #5c4033;
+	background: #e8d2ae;
+}
+
+
+/* ==============================
+   見出し
+============================== */
+
+.search-title {
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+
+/* ==============================
+product.php
+============================== */
+/* 検索フォーム */
+.search-form {
+	width: fit-content;
+	margin: 0 auto 25px;
+}
+
+.search-box {
+	width: 750px;
+	text-align: center;
+}
+
+.search-name {
+	width: 400px;
+	height: 35px;
+	background-color: #d2b48c;
+	border: 1px solid #8b5a2b;
+	border-radius: 4px;
+}
+
+.search-submit {
+	width: 60px;
+	height: 40px;
+	color: #fff;
+	background-color: #8b5a2b;
+	border: 1px solid #8b5a2b;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.search-submit:hover {
+	background-color: #5c4033;
+}
+
+
+/* 商品一覧 */
+.products {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	row-gap: 45px;
+	margin-top: 30px;
+}
+
+
+/* 商品カード */
+.card {
+	width: 300px;
+	margin: 0 auto;
+	padding: 20px;
+	overflow: hidden;
+	background: #f8f1e5;
+	border-radius: 10px;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+	transition: 0.3s;
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	img {
+		display: block;
+		width: 100%;
+		margin-bottom: 15px;
+		border-radius: 10px 10px 0 0;
+		transition: 0.3s;
+	}
+}
+
+.card:hover {
+	transform: translateY(-6px);
+	box-shadow:
+		0 8px 20px rgba(0, 0, 0, 0.08),
+		0 16px 40px rgba(0, 0, 0, 0.03);
+
+	img {
+		transform: scale(1.035);
+	}
+}
+
+.card-header {
+	display: flex;
+	align-items: baseline;
+	gap: 8px;
+	padding-bottom: 7px;
+	font-size: 16px;
+	border-bottom: 1px solid rgba(78, 52, 46, 0.4);
+}
+
+.card-header h3 {
+	margin: 0;
+	color: #a0522d;
+}
+
+.product-id {
+	margin: 0;
+	color: #888;
+	font-size: 14px;
+}
+
+.card-info {
+	display: flex;
+	gap: 30px;
+}
+
+.price,
+.stock {
+	margin-bottom: 0;
+
+	strong {
+		font-weight: bold;
+	}
+}
+
+.price strong {
+	color: #5c4033;
+}
+
+.stock strong {
+	color: #2e7d32;
+}
+
+/* 検索結果なし */
+.not-found {
+	grid-column: 1 / -1;
+	margin-top: 40px;
+	color: #a0522d;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+
+/* ==============================
+detail.php
+============================== */
+/* inner */
+.detail-inner{
+	width: 400px;
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.detail-img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+/* 文字の大きさ */
+.detail-id{
+	font-size: 18px;
+}
+
+.detail-card-name{
+	font-size: 24px;
+	max-width: 320px;
+}
+
+.detail-price{
+	font-size: 20px;
+}
+
+.detail-stock{
+	font-size: 20px;
+}
+
+/* 購入数 */
+.detail-count{
+	margin-top: 20px;
+}
+
+.count-cart{
+	width: 40px;
+	height: 25px;
+}
+
+.plus{
+	margin-left: 7px;
+	background-color: #8b5a2b;
+	color: #fff;
+	border: 1px solid #5a2f06;
+	padding: 5px 6px 5px;
+}
+
+.plus:hover{
+	background-color: #5c4033;
+	transition: 0.3s;
+	cursor: pointer;
+}
+
+.pieces{
+	font-size: 20px;
+	color: #666666;
+	font-weight: bold;
+}
+
+.detail-form{
+	display: flex;
+	align-items: center;
+}
+
+/* お気に入りボタン */
+.favorite-btn {
+	display: block;
+	padding: 0;
+	color: #888;
+	font-size: 35px;
+	line-height: 1;
+	background: none;
+	border: none;
+	cursor: pointer;
+	transition: 0.3s;
+	margin-left: 210px;
+}
+
+.favorite-btn:hover {
+	color: #f4b400;
+	transform: scale(1.1);
+}
+
+.favorite-btn.active {
+	color: #f4b400;
+}
+
+/* お気に入りボタン配置 */
+.detail-header {
+	position: relative;
+}
+
+.favorite-form {
+	position: absolute;
+	top: 30%;
+	right: 0;
+	transform: translateY(-50%);
+}
+
+.favorite-btn {
+	background: none;
+	border: none;
+	font-size: 35px;
+	cursor: pointer;
+	padding: 0;
+}
+
+/* ==============================
+ranking.php
+============================== */
+/* トップ3の色 */
+.rank-1 {
+	color: #D4AF37;
+	/* 金 */
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.rank-2 {
+	color: #A7A7AD;
+	/* 銀 */
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.rank-3 {
+	color: #B87333;
+	/* 銅 */
+	font-size: 20px;
+	font-weight: bold;
+}
+
+/* ==============================
+favorite.php
+============================== */
+/* 削除ボタン */
+.favorite-delete-btn{
+	display: block;
+	color: #fff;
+	background: #C0392B;
+	margin-left: auto;
+	margin-top: 12px;
+	border: 1.5px solid #4d1611;
+	cursor: pointer;
+	border-radius: 3px;
+}
+
+.favorite-delete-btn:hover {
+	color: #f1f1f1;
+	background: #8c281f;
+	transition: 0.2s;
+}
+
+/* ==============================
+history.php
+============================== */
+
+.purchase-history {
+	width: 700px;
+	margin: 30px auto;
+	padding: 25px;
+	background: #f8f1e5;
+	border-radius: 10px;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.purchase-date {
+	margin: 0 0 20px;
+	padding-bottom: 15px;
+	color: #666;
+	border-bottom: 1px solid rgba(78, 52, 46, 0.25);
+
+	span {
+		font-weight: bold;
+		color: #000;
+	}
+}
+
+.purchase-item {
+	display: flex;
+	align-items: center;
+	gap: 25px;
+	padding: 20px 0;
+	border-bottom: 1px solid rgba(78, 52, 46, 0.15);
+}
+
+.purchase-image {
+	flex-shrink: 0;
+}
+
+.purchase-image img {
+	display: block;
+	width: 250px;
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+	border-radius: 8px;
+}
+
+.purchase-info h3 {
+	margin: 5px 0 12px;
+	font-size: 22px;
+}
+
+.purchase-info h3 a {
+	color: #a0522d;
+	text-decoration: none;
+}
+
+.purchase-info h3 a:hover {
+	color: #8b5a2b;
+	transition: .2s;
+}
+
+.purchase-id {
+	margin: 0;
+	color: #888;
+	font-size: 14px;
+}
+
+.purchase-price {
+	margin: 0 0 8px;
+}
+
+.purchase-subtotal {
+	margin: 0;
+}
+
+.purchase-subtotal strong {
+	color: #5c4033;
+	padding-right: 10px;
+}
+
+.purchase-total {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 30px;
+	padding-top: 20px;
+	font-size: 20px;
+}
+
+.purchase-total span {
+	font-weight: bold;
+	color: #4e342e;
+}
+
+.purchase-total strong {
+	font-size: 20px;
+}
+
+.history-login{
+	margin-top: 40px;
+		color: #a0522d;
+		font-size: 20px;
+		font-weight: bold;
+		text-align: center;
+}
+/* ==============================
+cart.php
+============================== */
+.not-cart{
+	margin-top: 40px;
+	color: #a0522d;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.cart-items {
+	width: 700px;
+	margin: 30px auto;
+	padding: 25px;
+	background: #f8f1e5;
+	border-radius: 10px;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cart-delete-btn{
+	width: 70px;
+	display: block;
+	color: #fff;
+	background: #C0392B;
+	margin-left: auto;
+	border: 1.5px solid #4d1611;
+	cursor: pointer;
+	border-radius: 3px;
+	text-align: center;
+	padding: 3px;
+	margin-top: auto;
+}
+
+.cart-delete-btn:hover{
+	color: #f1f1f1;
+	background: #8c281f;
+	transition: 0.2s;
+}
+/* ==============================
+purchase-input.php
+============================== */
+.customer-info{
+	display: flex;
+	gap: 50px;
+	justify-content: center;
+}
+
+.customer-name{
+	font-size: 20px;
+
+	strong{
+		font-weight: bold;
+		color: #4e342e;
+	}
+}
+
+.customer-address{
+	font-size: 20px;
+
+	strong {
+		font-weight: bold;
+		color: #4e342e;
+	}
+}
+
+.confirm-message{
+	font-size: 18px;
+	text-align: center;
+}
+
+.coupon{
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	align-items: center;
+}
+
+.coupon-numbers{
+	font-size: 18px;
+	color: #4e342e;
+}
+
+.coupon-explanation{
+	font-size: 14px;
+}
+
+.coupon-check {
+	transform: scale(1.5);
+	accent-color: #00ff;
+	margin-right: 8px;
+	cursor: pointer;
+}
+
+.coupon-form{
+	width: fit-content;
+	margin: 0 auto 70px;
+	text-align: center;
+}
+
+.coupon-confirmed{
+	font-size: 20px;
+	width: 250px;
+	background: #33be3c;
+	padding: 10px;
+	color: #fff;
+	border-color: #0f8213;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.coupon-confirmed:hover{
+	background: #076e0b;
+	transition: .2s;
+}
+
+.coupon-use{
+	display: flex;
+	margin-top: 40px;
+	text-align: center;
+	justify-content: center;
+	font-size: 18px;
+}
+
+.coupon-plus{
+	text-align: center;
+	font-size: 18px;
+}
+
+.purchase-thank{
+	margin-top: 40px;
+	font-size: 20px;
+	text-align: center;
+}
+
+.cart-plus{
+	margin-top: 40px;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	color: #a0522d;
+}
+
+/* ==============================
+login.php logout.php
+============================== */
+.login,
+.customer {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	text-align: center;
+}
+
+.login-title,
+.logout-title{
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.login-name,
+.login-pass,
+.customer-input {
+	width: 200px;
+	height: 20px;
+	background-color: #d2b48c;
+	border: 1px solid #8b5a2b;
+	border-radius: 4px;
+}
+
+.login-name:focus,
+.login-pass:focus,
+.customer-input:focus {
+	outline: none;
+	border-color: #5c4033;
+	box-shadow: 0 0 0 3px rgba(139, 90, 43, 0.2);
+}
+
+.login-btn,
+.customer-btn {
+	display: inline-block;
+	width: 20%;
+	padding: 10px 20px;
+	border: 1px solid #8b5a2b;
+	border-radius: 6px;
+	background-color: transparent;
+	color: #8b5a2b;
+	font: inherit;
+	text-decoration: none;
+	cursor: pointer;
+	margin: auto;
+}
+
+.login-btn:hover,
+.customer-btn:hover {
+	background-color: #8b5a2b;
+	color: #fff;
+	transition: .2s;
+}
+
+.login-message{
+	color: #a0522d;
+		font-size: 20px;
+		font-weight: bold;
+		text-align: center;
+}
+
+.logout-title{
+	margin-top: 10px;
+}
+
+.logout-mark{
+	font-size: 60px;
+	text-align: center;
+	margin-bottom: 0;
+}
+
+.logout-text{
+	text-align: center;
+}
+
+.logout-btn{
+	display: block;
+	width: fit-content;
+	padding: 10px 20px;
+	border: 1px solid #8b5a2b;
+	border-radius: 6px;
+	color: #8b5a2b;
+	text-decoration: none;
+	margin: 25px auto;
+}
+
+.logout-btn:hover {
+	background-color: #8b5a2b;
+	color: #fff;
+	transition: .2s;
+}
+
+.logout-message {
+	margin: 70px auto;
+	text-align: center;
+}
+
+.logout-message-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 58px;
+	height: 58px;
+	margin: 0 auto 20px;
+	border-radius: 50%;
+	background-color: #8b5a2b;
+	color: #fff;
+	font-size: 32px;
+	font-weight: bold;
+}
+
+.logout-message.is-info .logout-message-icon {
+	background-color: #a0522d;
+}
+
+.logout-message p {
+	margin: 0 0 25px;
+	color: #4e342e;
+	font-size: 22px;
+	font-weight: bold;
+}
+
+.logout-message a {
+	display: inline-block;
+	padding: 10px 20px;
+	border: 1px solid #8b5a2b;
+	border-radius: 6px;
+	color: #8b5a2b;
+	text-decoration: none;
+}
+
+.logout-message a:hover {
+	background-color: #8b5a2b;
+	color: #fff;
+	transition: .2s;
+}
+
+/* ==============================
+customer.php
+============================== */
+.customer {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	text-align: center;
+}
