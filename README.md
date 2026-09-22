@@ -1,4 +1,4 @@
-# PHP EC SHOP
+# ECサイト（ネットショップ）
 
 PHP・MySQLを使用して制作したECサイトです。
 
